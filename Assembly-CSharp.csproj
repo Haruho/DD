@@ -61,16 +61,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Common\Archive.cs" />
+    <Compile Include="Assets\Scripts\Common\GateClass.cs" />
+    <Compile Include="Assets\Scripts\Common\GateType.cs" />
+    <Compile Include="Assets\Scripts\Common\MapGenerator.cs" />
+    <Compile Include="Assets\Scripts\Common\Player.cs" />
+    <Compile Include="Assets\Scripts\Common\ResourcesType.cs" />
     <Compile Include="Assets\Scripts\GameSceneUIManager.cs" />
-    <Compile Include="Assets\Scripts\GateClass.cs" />
     <Compile Include="Assets\Scripts\GateInstance.cs" />
-    <Compile Include="Assets\Scripts\GateType.cs" />
-    <Compile Include="Assets\Scripts\MapGenerator.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerInstance.cs" />
     <Compile Include="Assets\Scripts\Pointer.cs" />
     <Compile Include="Assets\Scripts\ResourcesInstance.cs" />
-    <Compile Include="Assets\Scripts\ResourcesType.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>E:/UnityProject/DD_/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

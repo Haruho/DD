@@ -11,6 +11,18 @@ public class GameSceneUIManager : MonoBehaviour {
     public Text metalText;
     //采集的进度条
     public Image chargeBar;
+    //UI电池预设体
+    public GameObject battery;
+    //实例化上面变量的父物体
+    public Transform bContent;
+    //生命值的滑动条
+    public Slider healthSlider;
+
+    //当前生命值
+    public static float currentHealth;
+    //当前电池数
+    public static int currentBatteryAmount;
+
     public static GameSceneUIManager instance;
 
     
@@ -20,13 +32,12 @@ public class GameSceneUIManager : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        //生命值获取
+        currentHealth = healthSlider.value;
+        //电池数量获取
+        currentBatteryAmount = bContent.transform.childCount;
+
+    }
     //更新资源显示
     public void UpdataResourcesUI(int wood,int metal)
     {
@@ -47,10 +58,48 @@ public class GameSceneUIManager : MonoBehaviour {
             chargeBar.gameObject.SetActive(false);
         }
     }
+    
     public void ChargeBarHide()
     {
         //伐木进程不需要恢复树木的初始血量 也就不需要重置ChargeBar的重置
         //取消显示
         chargeBar.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// 初始化电池数量
+    /// </summary>
+    public void BatteryAmuountInit(int bAmount)
+    {
+        //========================
+        //这个应该是从currentBatteryAmount作为for的循环数
+        //=========================
+        for (int i =0;i<bAmount;i++)
+        {
+            GameObject go = Instantiate(battery);
+            go.transform.SetParent(bContent,false);
+        }
+    }
+    /// <summary>
+    /// 加血
+    /// </summary>
+    public void Heal()
+    {
+        print("Jia  xue  ---不知道为什么有延迟！？？？？");
+        if (healthSlider.value < 10)
+        {
+            //加满！
+            healthSlider.value += 10;
+            //取消显示UI   或者  删除？  
+            //有gridcontentlayout  所以删除最后一个子物体即可
+            Destroy(bContent.GetChild(bContent.childCount - 1).gameObject);
+            //当前电池数量减一
+            currentBatteryAmount -= 1;
+        }
+        else
+        {
+            print("生命值已满");
+        }
+
     }
 }

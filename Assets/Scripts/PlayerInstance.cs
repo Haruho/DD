@@ -24,6 +24,18 @@ public class PlayerInstance : MonoBehaviour {
     private bool isCanMove;
 	// Use this for initialization
 	void Start () {
+        Init();
+    }
+
+    /// <summary>
+    /// 初始化方法，所有玩家的变量在这里初始化
+    /// </summary>
+    private void Init()
+    {
+        //=========================
+        //非初次进入游戏需要读取Archive的实例，也就是存档，根据存档给Player初始化
+        //Mark
+        //========================
         //初始化玩家实例
         cplayer = new Player();
         //赋值
@@ -32,11 +44,13 @@ public class PlayerInstance : MonoBehaviour {
         cplayer.Wit = 3;
         //transform声明
         ctransform = transform;
+        //移动初始化
         isCanMove = true;
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+        //初始化电池UI
+        GameSceneUIManager.instance.BatteryAmuountInit(cplayer.MaxBatteryAmount);
+    }
+    // Update is called once per frame
+    void FixedUpdate () {
 
         OperateFunction();
 
@@ -46,6 +60,7 @@ public class PlayerInstance : MonoBehaviour {
     /// </summary>
     void OperateFunction()
     {
+        //Move
         if (Input.GetKey(KeyCode.A) && isCanMove)
         {
             ctransform.Translate(Time.deltaTime * -cplayer.Speed, 0, 0);
@@ -62,8 +77,7 @@ public class PlayerInstance : MonoBehaviour {
         {
             ctransform.Translate(0, Time.deltaTime * -cplayer.Speed,0);
         }
-
-
+        //采集
         if (Input.GetKey(KeyCode.E))
         {
             //接触到资源物体  能采集
@@ -106,6 +120,12 @@ public class PlayerInstance : MonoBehaviour {
                     currentObj.GetComponent<BoxCollider2D>().enabled = false;
                 }
             }
+        }
+        //使用电池回复生命值
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            print("asdasdasd");
+            GameSceneUIManager.instance.Heal();
         }
     }
 
