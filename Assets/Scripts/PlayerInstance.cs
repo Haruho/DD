@@ -32,16 +32,22 @@ public class PlayerInstance : MonoBehaviour {
     /// </summary>
     private void Init()
     {
+
         //=========================
         //非初次进入游戏需要读取Archive的实例，也就是存档，根据存档给Player初始化
         //Mark
         //========================
         //初始化玩家实例
-        cplayer = new Player();
+        Archive archive = Archive.GetInstance();
+        cplayer = archive.player;
         //赋值
-        cplayer.Vit = 5;
-        cplayer.Speed = 10;
-        cplayer.Wit = 3;
+        //cplayer.Vit = 5;
+        //cplayer.Speed = 10;
+        //cplayer.Wit = 3;
+        print("MaxBatteryAmount :" + cplayer.MaxBatteryAmount);
+        print("Vit :" + cplayer.Vit);
+        print("Speed :" + cplayer.Speed);
+        print("Wit :" + cplayer.Wit);
         //transform声明
         ctransform = transform;
         //移动初始化
