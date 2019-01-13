@@ -2,6 +2,7 @@
 using System.IO;
 using LitJson;
 using System.Text;
+using UnityEngine.SceneManagement;
 /// <summary>
 /// 存档操作
 /// </summary>
@@ -10,21 +11,21 @@ public class ArchiveOperate : MonoBehaviour {
     // Use this for initialization
     void Start () {
         datapath = Application.dataPath + "/Resources/data.cd";
-        CheakArchiveInstance();
+
     }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
-
     /// <summary>
-    /// 检查有没有存档
+    /// 游戏开始按钮  触发游戏读档
     /// </summary>
-    void CheakArchiveInstance()
+    public void StartGame()
     {
         //存档地址
         string path = Application.dataPath + "/Resources/data.cd";
+        //检查有无游戏存档
         if (File.Exists(path))
         {
             //读取存档
@@ -55,18 +56,19 @@ public class ArchiveOperate : MonoBehaviour {
         player.Speed = (int)playerjsondata["Speed"];
         player.Wit = (int)playerjsondata["Wit"];
         player.Vit = (int)playerjsondata["Vit"];
-        print(archive.currentHealthy);
-        print("MaxBatteryAmount :" + archive.player.MaxBatteryAmount);
-        print("Vit :" + archive.player.Vit);
-        print("Speed :" + archive.player.Speed);
-        print("Wit :" + archive.player.Wit);
+        //print(archive.currentHealthy);
+        //print("MaxBatteryAmount :" + archive.player.MaxBatteryAmount);
+        //print("Vit :" + archive.player.Vit);
+        //print("Speed :" + archive.player.Speed);
+        //print("Wit :" + archive.player.Wit);
+        //给存档单例赋值
         Archive.SetInstance(archive);
         //return archive;
     }
     /// <summary>
     /// 创建存档  覆盖
     /// </summary>
-    void CreateGameData(Player player)
+    public void CreateGameData(Player player)
     {
         Archive archive = new Archive();
         archive.player = player;
@@ -80,10 +82,14 @@ public class ArchiveOperate : MonoBehaviour {
     {
         Archive archive = new Archive();
         archive.player = new Player();
-
+        //初次创建存档，给player赋值  339 是新建数据
+        archive.player.Wit = 3;
+        archive.player.Vit = 3;
+        archive.player.Speed = 9;
+        //把数据写入
         string jsonstr = JsonMapper.ToJson(archive);
         CreateDataFile(jsonstr);
-        print("new data :" + jsonstr);
+        Archive.SetInstance(archive);
     }
 
     /// <summary>

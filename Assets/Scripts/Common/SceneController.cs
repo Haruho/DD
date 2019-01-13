@@ -10,4 +10,9 @@ public class SceneController : MonoBehaviour {
     {
         SceneManager.LoadScene(1);
     }
+    //返回初始界面
+    public void ToStart()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

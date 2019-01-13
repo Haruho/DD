@@ -39,7 +39,19 @@ public class PlayerInstance : MonoBehaviour {
         //========================
         //初始化玩家实例
         Archive archive = Archive.GetInstance();
-        cplayer = archive.player;
+        //直接运行会空指针，方便测试先加一个临时的player
+        if (archive == null)
+        {
+            Player tempplayer = new Player();
+            tempplayer.Vit = 5;
+            tempplayer.Wit = 5;
+            tempplayer.Speed = 10;
+            cplayer = tempplayer;
+        }
+        else
+        {
+            cplayer = archive.player;
+        }
         //赋值
         //cplayer.Vit = 5;
         //cplayer.Speed = 10;
@@ -165,5 +177,12 @@ public class PlayerInstance : MonoBehaviour {
         {
             GameSceneUIManager.instance.UpdataResourcesUI(woodNumber, meatlNumber);
         }
+    }
+    //测试成功
+    public void TestArchive()
+    {
+        //当前血量存储问题
+        ArchiveOperate ao = new ArchiveOperate();
+        ao.CreateGameData(cplayer);
     }
 }

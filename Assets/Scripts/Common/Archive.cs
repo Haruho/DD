@@ -2,7 +2,8 @@
 /// 玩家的存档类
 /// </summary>
 public class Archive{
-    public static Archive archive = null;
+    //public的话会把这个变量作为json的一段数据存在存档中，完全是没有必要的
+    private static Archive archive = null;
     /// <summary>
     /// 当前的血量
     /// </summary>
