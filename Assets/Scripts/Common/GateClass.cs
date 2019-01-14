@@ -7,25 +7,41 @@ using UnityEngine;
 /// </summary>
 public class GateClass : MonoBehaviour
 {
+    public GameObject[] gates;
+    public static GateClass instace;
+    void Awake()
+    {
+        instace = this;
+    }
     void Start()
     {
-        //获取所有Gate的图示
     }
-
-
-    public Sprite ObjToSprite(string sName)
+    //public Sprite ObjToSprite(string sName)
+    //{
+    //    Sprite s = null;
+    //    //这个变量放在类中声明之后会报空指针
+    //    object[] gateGuise = Resources.LoadAll("GateGuise", typeof(Sprite));
+    //    //gateGuise = Resources.LoadAll("GateGuise", typeof(Sprite));
+    //    for (int i = 0; i < gateGuise.Length; i++)
+    //    {
+    //        if (gateGuise[i].ToString().Contains(sName))
+    //        {
+    //            s = (Sprite)gateGuise[i];
+    //        }
+    //    }
+    //    return s;
+    //}
+    //获取需要实例化的物体
+    public GameObject GateOpenResult(GateType type)
     {
-        Sprite s = null;
-        //这个变量放在类中声明之后会报空指针
-        object[] gateGuise = Resources.LoadAll("GateGuise", typeof(Sprite));
-        //gateGuise = Resources.LoadAll("GateGuise", typeof(Sprite));
-        for (int i = 0; i < gateGuise.Length; i++)
+       // print(type.ToString());
+        for (int i = 0; i < gates.Length; i++)
         {
-            if (gateGuise[i].ToString().Contains(sName))
+            if (type.ToString() == gates[i].name)
             {
-                s = (Sprite)gateGuise[i];
+                return gates[i];
             }
         }
-        return s;
+        return null;
     }
 }

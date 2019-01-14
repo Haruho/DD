@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class PlayerInstance : MonoBehaviour {
     //玩家实例
-    private Player cplayer;
+    public Player cplayer;
 
     //是否进入采集状态
     public bool isCanGather;
@@ -56,10 +56,10 @@ public class PlayerInstance : MonoBehaviour {
         //cplayer.Vit = 5;
         //cplayer.Speed = 10;
         //cplayer.Wit = 3;
-        print("MaxBatteryAmount :" + cplayer.MaxBatteryAmount);
-        print("Vit :" + cplayer.Vit);
-        print("Speed :" + cplayer.Speed);
-        print("Wit :" + cplayer.Wit);
+        //print("MaxBatteryAmount :" + cplayer.MaxBatteryAmount);
+        //print("Vit :" + cplayer.Vit);
+        //print("Speed :" + cplayer.Speed);
+        //print("Wit :" + cplayer.Wit);
         //transform声明
         ctransform = transform;
         //移动初始化
@@ -142,7 +142,6 @@ public class PlayerInstance : MonoBehaviour {
         //使用电池回复生命值
         if (Input.GetKeyDown(KeyCode.R))
         {
-            print("asdasdasd");
             GameSceneUIManager.instance.Heal();
         }
     }

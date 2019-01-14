@@ -2614,6 +2614,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a61a71b761d3f46a541b52f967c80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gates:
+  - {fileID: 1832104824790750, guid: 52ef1ecbfe06a8044bbe96c870855901, type: 2}
+  - {fileID: 1130058158790434, guid: cd0aadb881180004197f1be87397a6f2, type: 2}
+  - {fileID: 1327836331291050, guid: e0439e02474e09c4d870004115229c34, type: 2}
+  - {fileID: 1802751550028440, guid: 7bb3f5887c2382646941f93c2cff97c1, type: 2}
 --- !u!114 &1853448056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2838,7 +2843,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2870,7 +2875,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

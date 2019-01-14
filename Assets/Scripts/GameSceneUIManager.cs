@@ -34,9 +34,6 @@ public class GameSceneUIManager : MonoBehaviour {
 	void Start () {
         //生命值获取
         currentHealth = healthSlider.value;
-        //电池数量获取
-        currentBatteryAmount = bContent.transform.childCount;
-
     }
     //更新资源显示
     public void UpdataResourcesUI(int wood,int metal)
@@ -79,6 +76,8 @@ public class GameSceneUIManager : MonoBehaviour {
             GameObject go = Instantiate(battery);
             go.transform.SetParent(bContent,false);
         }
+        //电池数量获取
+        currentBatteryAmount = bAmount;
     }
     /// <summary>
     /// 加血
@@ -101,5 +100,17 @@ public class GameSceneUIManager : MonoBehaviour {
             print("生命值已满");
         }
 
+    }
+    /// <summary>
+    /// 获取电池
+    /// </summary>
+    public void AddBattery(int maxBattery)
+    {
+        //执行前已经判断
+        //电池数量+1
+        currentBatteryAmount += 1;
+        //创建UI
+        GameObject go = Instantiate(battery);
+        go.transform.SetParent(bContent, false);
     }
 }

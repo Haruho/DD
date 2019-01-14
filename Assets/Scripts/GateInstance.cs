@@ -6,6 +6,7 @@ using UnityEngine;
 /// Gate的实例
 /// </summary>
 public class GateInstance : MonoBehaviour {
+    //Gate类型
     private GateType type;
     private Collider2D m_collider;
 
@@ -30,28 +31,42 @@ public class GateInstance : MonoBehaviour {
         }
     }
     void ConfirmGateType()
-    {
+    { 
         //根据随机数确定概率
         float rate = Random.value;
         if (rate < 0.25f)
         {
             type = GateType.altar;
-            print("altar");
+          //  print("altar");
         }
         else if (rate>0.25f && rate < 0.75f)
         {
             type = GateType.battery;
-            print("battery");
+           // print("battery");
         }
         else if (rate > 0.75f)
         {
             type = GateType.wormhole;
-            print("Wormhole");
+          //  print("Wormhole");
         }
-        //获取图示
-        GateClass gc = new GateClass();
-        m_sr.sprite = gc.ObjToSprite(type.ToString());
-        //触发之后就不会再次触发
-        m_collider.enabled = false;
+        //单纯置换图片会导致功能混乱  选择实例化
+        //获取图示 
+        //GateClass gc = new GateClass();
+        //m_sr.sprite = gc.ObjToSprite(type.ToString());
+        ////触发之后就不会再次触发 电池除外
+        //if (type == GateType.battery)
+        //{
+        //    transform.GetComponent<GateInstance>().enabled = false;
+        //    transform.gameObject.AddComponent<BatteryBehaviour>();
+        //}
+        //else
+        //{
+        //    m_collider.enabled = false;
+        //}
+        //new一个gate会导致gates变量为空
+        //实例化gate的结果
+        Instantiate(GateClass.instace.GateOpenResult(type),transform.position,Quaternion.identity);
+        //删除触发Gate
+        Destroy(this.gameObject);
     }
 }
