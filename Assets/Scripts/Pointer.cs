@@ -6,8 +6,15 @@ using UnityEngine;
 /// 选择道具的Pointer
 /// </summary>
 public class Pointer : MonoBehaviour {
+    public static Pointer instance;
     private Transform m_transform;
-   // Ray2D ray;
+
+    private GameObject selectObj;
+    
+    void Awake()
+    {
+        instance = this;
+    }
 	// Use this for initialization
 	void Start () {
         m_transform = transform;
@@ -25,10 +32,38 @@ public class Pointer : MonoBehaviour {
 
         //发射射线
        // Ray2D ray = new Ray2D(m_transform.position,m_transform.forward);
-        RaycastHit2D hit = Physics2D.Raycast(m_transform.position, m_transform.up,8);
-        if (hit.transform != null)
-        {
-            print(hit.transform.name);
-        }
+       //射线的实现效果不好
+
 	}
+    /// <summary>
+    /// 指针通过collider的碰撞来确定选择
+    /// </summary>
+    /// <param name="item"></param>
+    void OnTriggerStay2D(Collider2D item)
+    {
+        if (item != null)
+        {
+            selectObj = item.gameObject;
+            item.gameObject.transform.localScale = Vector3.Lerp(item.gameObject.transform.localScale,new Vector3(0.4f,0.4f,0.4f),Time.time * 0.1f);
+        }
+        else
+        {
+            print("Null");
+        }
+    }
+    void OnTriggerExit2D(Collider2D item)
+    {
+        if (item != null)
+        {
+            item.gameObject.transform.localScale = new Vector3(0.3f,0.3f,0.3f);
+        }
+    }
+    /// <summary>
+    /// 确定选择的item
+    /// </summary>
+    public void ConfirmItem()
+    {
+        print("选择了 ：" + selectObj.name);
+        
+    }
 }
