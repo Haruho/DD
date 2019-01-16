@@ -1,0 +1,35 @@
+{
+    "   ":[{
+       "name":"M21",
+       "woodExpend":10,
+       "metalExpend":10,
+       "type":2,
+       "value" :10,
+       "image":"m21.png"
+    },
+    {
+        "name":"激光枪",
+        "woodExpend":9,
+        "metalExpend":9,
+        "type":2,
+        "value" :20,
+        "image":"jiguangqiang.png"
+    },
+    {
+        "name":"炮台",
+        "woodExpend":20,
+        "metalExpend":20,
+        "type":1,
+        "value" :50,
+        "image":"paotai.png"
+    },
+    {
+        "name":"箭塔",
+        "woodExpend":30,
+        "metalExpend":10,
+        "type":1,
+        "value" :40,
+        "image":"jianta.png"
+    }
+]
+}

@@ -63,7 +63,6 @@ public class Pointer : MonoBehaviour {
     /// </summary>
     public void ConfirmItem()
     {
-        print("选择了 ：" + selectObj.name);
-        
+        print("选择了 ：" + selectObj.name);      
     }
 }
