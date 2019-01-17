@@ -1,8 +1,14 @@
 ﻿/// <summary>
 /// 建筑和武器的类
 /// </summary>
+
+[System.Serializable]
 public class Blueprint
 {
+    /// <summary>
+    /// 建造物的id  这个id是玩家通过list的形式存在存档中
+    /// </summary>
+    public int id { get; set; }
     /// <summary>
     /// 建造物的名称
     /// </summary>
@@ -27,4 +33,8 @@ public class Blueprint
     /// 建造物的缩略图
     /// </summary>
     public string image { get;set; }
+    /// <summary>
+    /// 玩家是否拥有
+    /// </summary>
+    public bool ownState { get; set; }
 }

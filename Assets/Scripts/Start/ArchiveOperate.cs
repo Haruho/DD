@@ -10,7 +10,7 @@ public class ArchiveOperate : MonoBehaviour {
     string datapath;
     // Use this for initialization
     void Start () {
-        datapath = Application.dataPath + "/Resources/data.cd";
+        datapath = Application.dataPath + "/Archive/";
 
     }
 	
@@ -112,4 +112,5 @@ public class ArchiveOperate : MonoBehaviour {
             fileStream.Dispose();
         }
     }
+
 }
