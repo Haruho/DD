@@ -53,7 +53,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\ArchiveButton.cs" />
      <Compile Include="Assets\Scripts\BatteryBehaviour.cs" />
      <Compile Include="Assets\Scripts\Common\Archive.cs" />
      <Compile Include="Assets\Scripts\Common\Blueprint.cs" />
@@ -70,9 +69,10 @@
      <Compile Include="Assets\Scripts\GateInstance.cs" />
      <Compile Include="Assets\Scripts\PlayerInstance.cs" />
      <Compile Include="Assets\Scripts\Pointer.cs" />
-     <Compile Include="Assets\Scripts\ReadBuleprintData.cs" />
      <Compile Include="Assets\Scripts\ResourcesInstance.cs" />
+     <Compile Include="Assets\Scripts\Start\ArchiveButton.cs" />
      <Compile Include="Assets\Scripts\Start\ArchiveOperate.cs" />
+     <Compile Include="Assets\Scripts\Start\ReadBuleprintData.cs" />
      <None Include="Assets\Archive\A3.cd" />
      <None Include="Assets\Archive\A1.cd" />
  <Reference Include="UnityEditor.StandardEvents">

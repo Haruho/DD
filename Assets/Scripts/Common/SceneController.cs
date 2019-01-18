@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 /// 场景管理器
 /// </summary>
 public class SceneController : MonoBehaviour {
+    public static SceneController instance;
+    void Awake()
+    {
+        instance = this;
+    }
     public void ToMain()
     {
         SceneManager.LoadScene(1);

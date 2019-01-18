@@ -2,6 +2,7 @@
 using System.IO;
 using LitJson;
 using System.Text;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 /// <summary>
 /// 存档操作
@@ -23,19 +24,20 @@ public class ArchiveOperate : MonoBehaviour {
     /// </summary>
     public void StartGame()
     {
-        //存档地址
-        string path = Application.dataPath + "/Resources/data.cd";
-        //检查有无游戏存档
-        if (File.Exists(path))
+        GameObject mbutton = EventSystem.current.currentSelectedGameObject;
+        //Button behaviour
+        if (mbutton.GetComponent<ArchiveButton>().Init())
         {
-            //读取存档
-            ReadData();
+            //读取数据
+            //ReadData();
         }
         else
         {
-            //NEW DATA  序列化存档
+            //创建新数据
             CreateGameData();
         }
+        //跳转场景
+        //SceneController.instance.ToMain();
     }
     /// <summary>
     /// 读取存档并应用
@@ -112,5 +114,4 @@ public class ArchiveOperate : MonoBehaviour {
             fileStream.Dispose();
         }
     }
-
 }
