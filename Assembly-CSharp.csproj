@@ -75,6 +75,7 @@
      <Compile Include="Assets\Scripts\Start\ReadBuleprintData.cs" />
      <None Include="Assets\Archive\A3.cd" />
      <None Include="Assets\Archive\A1.cd" />
+     <None Include="Assets\Archive\A2.cd" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>E:/unity2017projects/DD/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>

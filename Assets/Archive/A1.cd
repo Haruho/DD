@@ -2,7 +2,7 @@
     "currentHealthy": 0,
     "player": {
         "Vit": 3,
-        "Speed": 9,
+        "Speed": 2,
         "Wit": 3,
         "MaxBatteryAmount": 3
     }

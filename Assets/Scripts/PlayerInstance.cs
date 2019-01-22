@@ -217,11 +217,4 @@ public class PlayerInstance : MonoBehaviour {
             GameSceneUIManager.instance.UpdataResourcesUI(woodNumber, meatlNumber);
         }
     }
-    //测试成功
-    public void TestArchive()
-    {
-        //当前血量存储问题
-        ArchiveOperate ao = new ArchiveOperate();
-        ao.CreateGameData(cplayer);
-    }
 }

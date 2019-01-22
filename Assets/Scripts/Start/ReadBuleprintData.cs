@@ -11,33 +11,39 @@ using UnityEngine.UI;
 public class ReadBuleprintData : MonoBehaviour {
     //用来存储item 实例
     public static List<Blueprint> blueprints;
-    //建造面板的UI
-    public Transform conPanel;
-    //建造物UI预设体
-    public GameObject conPrefab;
-
-    private static int allItemNumber;
-    private static int ownItemNumber;
-    private string datapath;
+    ////建造面板的UI
+    //public Transform conPanel;
+    ////建造物UI预设体
+    //public GameObject conPrefab;
+    public static ReadBuleprintData instance;
+    void Awake()
+    {
+        instance = this;
+    }
     // Use this for initialization
     void Start() {
         blueprints = new List<Blueprint>();
-        datapath = Application.dataPath + "/Resources/Blueprint.json";
-
-        ReadData();
-    }
-
-    // Update is called once per frame
-    void Update() {
 
     }
-    void ReadData()
+    //由存档类触发Item类
+    public void BlueprintInit()
     {
-        //print("blueprint readdata");
+
+    }
+    /// <summary>
+    /// 读取item的数据
+    /// </summary>
+    /// <param name="fileNumber">文件编号</param>
+    /// <returns>[所有item数量，解锁的item数量]</returns>
+    public List<int> ReadData(string fileNumber)
+    {
+        //读取item的json  根据编号
+        string datapath = Application.dataPath + "/Blueprint/Blueprint" + fileNumber+".json";
         string data = File.ReadAllText(datapath, Encoding.UTF8);
         JsonData root = JsonMapper.ToObject(data);
         JsonData node = root["blueprint"];
-
+        int ownItemNumber = 0;
+        List<int> temp = new List<int>();
         for (int i = 0; i < node.Count; i++)
         {
             Blueprint bp = new Blueprint();
@@ -49,42 +55,29 @@ public class ReadBuleprintData : MonoBehaviour {
             bp.value = (int)node[i]["value"];
             bp.image = (string)node[i]["image"];
             bp.ownState = (bool)node[i]["ownState"];
-            blueprints.Add(bp);
-        }
-        allItemNumber = blueprints.Count;
-        CreateContructionsPanel(blueprints);
-    }
-    /// <summary>
-    /// 创建建造物的面板
-    /// </summary>
-    void CreateContructionsPanel(List<Blueprint> conObj)
-    {
-       // print("CreateContructionsPanel");
-        for (int i = 0; i < conObj.Count; i++)
-        {
-            //获取拥有状态的实例
-            if (conObj[i].ownState)
+            if (bp.ownState)
             {
-                //实例化UI
-                GameObject go = Instantiate(conPrefab, conPanel);
-                //替换图片`
-                go.GetComponent<Image>().sprite =
-                    (Sprite)Resources.Load("ItemImage/" + conObj[i].image, typeof(Sprite));
                 ownItemNumber += 1;
             }
+            blueprints.Add(bp);
         }
+        //填充数组
+        temp.Add(blueprints.Count);
+        temp.Add(ownItemNumber);
+        ////panel创建
+        //CreateContructionsPanel(blueprints);
+        return temp;
     }
+
     /// <summary>
-    /// 获取收集率
+    /// 创建新的Item的Json文件
     /// </summary>
-    /// <returns>收集率</returns>
-    public static string GetCollectionRate()
+    /// <param name="filename">文件名</param>
+    public void CreateNewBlueprintFile(string filename)
     {
-       // print("All item :" + allItemNumber + "  own item :" + ownItemNumber);
-        //不强制转换结果是0  计算收集率
-        float rate = ((float)ownItemNumber / (float)allItemNumber) * 100;
-        //print(rate.ToString("0.0") + "%");
-        //保留一个小数
-        return rate.ToString("0.0") + "%";
+        //标准的Item信息文件
+        string sourceFile = Application.dataPath + "/Blueprint/Standrad.json";
+        string destFile = Application.dataPath + "/Blueprint/" + filename;
+        File.Copy(sourceFile, destFile);
     }
 }

@@ -13,10 +13,4 @@ public class GameSceneArchive : MonoBehaviour {
 	void Update () {
 		
 	}
-    public void TestArchive()
-    {
-        ArchiveOperate ao = new ArchiveOperate();
-        Player a = new Player();
-        ao.CreateGameData(a);
-    }
 }
