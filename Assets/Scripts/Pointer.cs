@@ -10,7 +10,6 @@ public class Pointer : MonoBehaviour {
     private Transform m_transform;
 
     private GameObject selectObj;
-    
     void Awake()
     {
         instance = this;

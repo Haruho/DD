@@ -34,7 +34,6 @@ public class GateClass : MonoBehaviour
     //获取需要实例化的物体
     public GameObject GateOpenResult(GateType type)
     {
-       // print(type.ToString());
         for (int i = 0; i < gates.Length; i++)
         {
             if (type.ToString() == gates[i].name)
@@ -42,6 +41,6 @@ public class GateClass : MonoBehaviour
                 return gates[i];
             }
         }
-        return null;
+        return gates[1];
     }
 }

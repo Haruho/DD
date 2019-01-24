@@ -65,7 +65,9 @@ public class GateInstance : MonoBehaviour {
         //}
         //new一个gate会导致gates变量为空
         //实例化gate的结果
-        Instantiate(GateClass.instace.GateOpenResult(type),transform.position,Quaternion.identity);
+        //Instantiate(GateClass.instace.GateOpenResult(type),transform.position,Quaternion.identity);
+        GameObject go = GateClass.instace.GateOpenResult(type);
+        Instantiate(go, transform.position, Quaternion.identity);
         //删除触发Gate
         Destroy(this.gameObject);
     }

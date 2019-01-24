@@ -25,7 +25,7 @@ public class GameSceneUIManager : MonoBehaviour {
 
     public static GameSceneUIManager instance;
 
-    
+    public Text archivePath;
     void Awake()
     {
         instance = this;
@@ -34,6 +34,8 @@ public class GameSceneUIManager : MonoBehaviour {
 	void Start () {
         //生命值获取
         currentHealth = healthSlider.value;
+        //存档测试text
+       // archivePath.text = Archive.GetInstance().ArchiveNameForTesting;
     }
     //更新资源显示
     public void UpdataResourcesUI(int wood,int metal)

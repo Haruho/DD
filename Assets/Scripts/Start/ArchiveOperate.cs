@@ -52,6 +52,8 @@ public class ArchiveOperate : MonoBehaviour {
         //存档类实例
         Archive archive = new Archive();
         archive.currentHealthy = (int)jsondata["currentHealthy"];
+        //测试用存档路径
+        archive.ArchiveNameForTesting = archivePath;
         //玩家类实例
         Player player = new Player();
         archive.player = player;
@@ -59,7 +61,6 @@ public class ArchiveOperate : MonoBehaviour {
         player.Speed = (int)playerjsondata["Speed"];
         player.Wit = (int)playerjsondata["Wit"];
         player.Vit = (int)playerjsondata["Vit"];
-        print(player.Speed);
         //给存档单例赋值
         Archive.SetInstance(archive);
     }

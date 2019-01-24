@@ -58,6 +58,8 @@ public class ArchiveButton : MonoBehaviour {
         {
             string archivePath = Application.dataPath + "/Archive/" + mButton.name + ".cd";
             ArchiveOperate.ReadDataByNumber(archivePath);
+            //执行完上面的数据读取  跳转场景
+            SceneController.instance.ToStart();
         }
         else
         //创建新存档 和 新的item json文件

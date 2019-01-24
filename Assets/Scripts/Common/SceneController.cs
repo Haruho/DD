@@ -11,13 +11,23 @@ public class SceneController : MonoBehaviour {
     {
         instance = this;
     }
-    public void ToMain()
+    /// <summary>
+    /// 前往游戏开始界面
+    /// </summary>
+    public void ToStart()
     {
         SceneManager.LoadScene(1);
     }
     //返回初始界面
-    public void ToStart()
+    public void ToArchive()
     {
         SceneManager.LoadScene(0);
+    }
+    /// <summary>
+    /// 前往游戏界面
+    /// </summary>
+    public void ToGame()
+    {
+        SceneManager.LoadScene(2);
     }
 }
