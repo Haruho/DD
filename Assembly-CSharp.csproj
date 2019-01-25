@@ -69,7 +69,8 @@
      <Compile Include="Assets\Scripts\GateInstance.cs" />
      <Compile Include="Assets\Scripts\PlayerInstance.cs" />
      <Compile Include="Assets\Scripts\Pointer.cs" />
-     <Compile Include="Assets\Scripts\Prepare\PreapreInterface.cs" />
+     <Compile Include="Assets\Scripts\Prepare\ItemDrag.cs" />
+     <Compile Include="Assets\Scripts\Prepare\PrepareInterface.cs" />
      <Compile Include="Assets\Scripts\ResourcesInstance.cs" />
      <Compile Include="Assets\Scripts\Start\ArchiveButton.cs" />
      <Compile Include="Assets\Scripts\Start\ArchiveOperate.cs" />

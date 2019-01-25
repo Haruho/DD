@@ -9,8 +9,6 @@ using UnityEngine.UI;
 /// 从Blueprint.json中读取相应的设计图数据  存放在list中
 /// </summary>
 public class ReadBuleprintData : MonoBehaviour {
-    //用来存储item 实例
-    public static List<Blueprint> blueprints;
     ////建造面板的UI
     //public Transform conPanel;
     ////建造物UI预设体
@@ -22,7 +20,6 @@ public class ReadBuleprintData : MonoBehaviour {
     }
     // Use this for initialization
     void Start() {
-        blueprints = new List<Blueprint>();
 
     }
     //由存档类触发Item类
@@ -30,21 +27,15 @@ public class ReadBuleprintData : MonoBehaviour {
     {
 
     }
-    /// <summary>
-    /// 读取item的数据
-    /// </summary>
-    /// <param name="fileNumber">文件编号</param>
-    /// <returns>[所有item数量，解锁的item数量]</returns>
-    public List<int> ReadData(string fileNumber)
+    public List<Blueprint> GetOwnBlueprint(string fileNumber)
     {
         //读取item的json  根据编号
-        string datapath = Application.dataPath + "/Blueprint/Blueprint" + fileNumber+".json";
+        string datapath = Application.dataPath + "/Blueprint/Blueprint" + fileNumber + ".json";
         string data = File.ReadAllText(datapath, Encoding.UTF8);
+        List<Blueprint> blueprints = new List<Blueprint>();
         JsonData root = JsonMapper.ToObject(data);
         JsonData node = root["blueprint"];
-        int ownItemNumber = 0;
-        List<int> temp = new List<int>();
-        for (int i = 0; i < node.Count; i++)
+        for (int i = 0;i<node.Count;i++)
         {
             Blueprint bp = new Blueprint();
             bp.id = (int)node[i]["id"];
@@ -57,12 +48,38 @@ public class ReadBuleprintData : MonoBehaviour {
             bp.ownState = (bool)node[i]["ownState"];
             if (bp.ownState)
             {
+                blueprints.Add(bp);
+            }
+        }
+        return blueprints;
+    }
+    /// <summary>
+    /// 读取item的数量
+    /// </summary>
+    /// <param name="fileNumber">文件编号</param>
+    /// <returns>[所有item数量，解锁的item数量]</returns>
+    public List<int> GetItemNumber(string fileNumber)
+    {
+        //读取item的json  根据编号
+        string datapath = Application.dataPath + "/Blueprint/Blueprint" + fileNumber+".json";
+        string data = File.ReadAllText(datapath, Encoding.UTF8);
+        JsonData root = JsonMapper.ToObject(data);
+        JsonData node = root["blueprint"];
+        int allItemNumber = 0;
+        int ownItemNumber = 0;
+        List<int> temp = new List<int>();
+        for (int i = 0; i < node.Count; i++)
+        {
+            allItemNumber += 1;
+            Blueprint bp = new Blueprint();
+            bp.ownState = (bool)node[i]["ownState"];
+            if (bp.ownState)
+            {
                 ownItemNumber += 1;
             }
-            blueprints.Add(bp);
         }
         //填充数组
-        temp.Add(blueprints.Count);
+        temp.Add(allItemNumber);
         temp.Add(ownItemNumber);
         ////panel创建
         //CreateContructionsPanel(blueprints);
