@@ -6,17 +6,26 @@ using UnityEngine.EventSystems;
 /// 实现UI的拖拽效果
 /// </summary>
 public class ItemDrag : MonoBehaviour{
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-    public void DragImg()
+    Transform backpack;
+    Transform warehouse;
+    private void Start()
     {
-        transform.GetComponent<RectTransform>().anchoredPosition = Camera.main.WorldToScreenPoint(Input.mousePosition);
+        backpack = GameObject.Find("Canvas/backpack").transform;
+        warehouse = GameObject.Find("Canvas/warehouse").transform;
+    }
+    /// <summary>
+    /// Item的点击效果，从仓库到背包
+    /// </summary>
+    public void OnClick()
+    {
+        //在背包中的话
+        if (transform.parent.name == backpack.name)
+        {
+            transform.SetParent(warehouse, false);
+        }
+        else if (transform.parent.name == warehouse.name)
+        {
+            transform.SetParent(backpack, false);
+        }
     }
 }
