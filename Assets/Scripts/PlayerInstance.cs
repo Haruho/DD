@@ -26,11 +26,13 @@ public class PlayerInstance : MonoBehaviour {
     private int meatlNumber;
     //禁用移动标志位
     private bool isCanMove;
+    private Animator anim;
 	// Use this for initialization
 	void Start () {
         Init();
         pointer = ctransform.Find("pointer").gameObject;
         itemPanle = ctransform.Find("Item").gameObject;
+        anim = GetComponent<Animator>();
     }
 
     /// <summary>
@@ -51,7 +53,7 @@ public class PlayerInstance : MonoBehaviour {
             Player tempplayer = new Player();
             tempplayer.Vit = 5;
             tempplayer.Wit = 5;
-            tempplayer.Speed = 10;
+            tempplayer.Speed = 3;
             cplayer = tempplayer;
         }
         else
@@ -74,7 +76,7 @@ public class PlayerInstance : MonoBehaviour {
         GameSceneUIManager.instance.BatteryAmuountInit(cplayer.MaxBatteryAmount);
     }
     // Update is called once per frame
-    void FixedUpdate () {
+    void Update () {
 
         OperateFunction();
 
@@ -84,22 +86,43 @@ public class PlayerInstance : MonoBehaviour {
     /// </summary>
     void OperateFunction()
     {
-        //Move
+        //Move  感觉斜着移动的时候速度变大了
         if (Input.GetKey(KeyCode.A) && isCanMove)
         {
-            ctransform.Translate(Time.deltaTime * -cplayer.Speed, 0, 0);
+            ctransform.Translate(Time.deltaTime * cplayer.Speed, 0, 0);
+            transform.eulerAngles = new Vector3(0,180,0);
+            anim.SetBool("move_x",true);
+        }
+        else if(Input.GetKeyUp(KeyCode.A))
+        {
+            anim.SetBool("move_x", false);
         }
         if (Input.GetKey(KeyCode.D) && isCanMove)
         {
             ctransform.Translate(Time.deltaTime * cplayer.Speed, 0, 0);
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            anim.SetBool("move_x", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.D))
+        {
+            anim.SetBool("move_x", false);
         }
         if (Input.GetKey(KeyCode.W) && isCanMove)
         {
             ctransform.Translate(0,Time.deltaTime * cplayer.Speed,0);
+            anim.SetBool("move_y",true);
+        }else if (Input.GetKeyUp(KeyCode.W))
+        {
+            anim.SetBool("move_y", false);
         }
         if (Input.GetKey(KeyCode.S) && isCanMove)
         {
             ctransform.Translate(0, Time.deltaTime * -cplayer.Speed,0);
+            anim.SetBool("move_y", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            anim.SetBool("move_y", false);
         }
         //采集
         if (Input.GetKey(KeyCode.E))
@@ -111,7 +134,7 @@ public class PlayerInstance : MonoBehaviour {
                 currentObj.GetComponent<ResourcesInstance>().life -= 1f;
                 GameSceneUIManager.instance.ChargebarDisplay();
                 Vector3 ctPos = Camera.main.WorldToScreenPoint(ctransform.position);
-                GameSceneUIManager.instance.chargeBar.GetComponent<RectTransform>().position = new Vector2(ctPos.x,ctPos.y + 100);
+                GameSceneUIManager.instance.chargeBar.GetComponent<RectTransform>().position = new Vector2(ctPos.x,ctPos.y + 50);
                 if (currentObj.GetComponent<ResourcesInstance>().life == 0)
                 {
                     print("Gather is Finish");

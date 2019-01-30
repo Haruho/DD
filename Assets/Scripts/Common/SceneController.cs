@@ -24,10 +24,17 @@ public class SceneController : MonoBehaviour {
         SceneManager.LoadScene(0);
     }
     /// <summary>
+    /// 前往准备界面
+    /// </summary>
+    public void ToPrepare()
+    {
+        SceneManager.LoadScene(2);
+    }
+    /// <summary>
     /// 前往游戏界面
     /// </summary>
     public void ToGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 }
