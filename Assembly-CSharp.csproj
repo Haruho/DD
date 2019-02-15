@@ -74,6 +74,7 @@
      <Compile Include="Assets\Scripts\Start\ArchiveButton.cs" />
      <Compile Include="Assets\Scripts\Start\ArchiveOperate.cs" />
      <Compile Include="Assets\Scripts\Start\ReadBuleprintData.cs" />
+     <Compile Include="Assets\testforslice.cs" />
      <None Include="Assets\Archive\A3.cd" />
      <None Include="Assets\Archive\A1.cd" />
      <None Include="Assets\Archive\A2.cd" />
