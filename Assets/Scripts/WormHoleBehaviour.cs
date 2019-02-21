@@ -6,11 +6,12 @@ using UnityEngine;
 public class WormHoleBehaviour : MonoBehaviour {
     //休眠时间  经过休眠时间之后，虫洞开始生成怪物
     public float sleepTime;
-    public TextMeshPro tmp;
+    private TextMeshPro tmp;
     private GameObject monster_1;
 	// Use this for initialization
 	void Start () {
         monster_1 = Resources.Load("MonsterPrefabs/Monster_1") as GameObject;
+        tmp = transform.GetChild(0).GetComponent<TextMeshPro>();
         StartCoroutine(Awaking());
 	}
 	

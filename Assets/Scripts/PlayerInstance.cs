@@ -174,23 +174,23 @@ public class PlayerInstance : MonoBehaviour {
             GameSceneUIManager.instance.Heal();
         }
         //打开item界面
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            pointer.SetActive(true);
-            itemPanle.SetActive(true);
-            //单击右键取消选择
-        }
-        //释放按键也取消显示  人物在边界的时候  显示的位置
-        else if(Input.GetKeyUp(KeyCode.F))
-        {
-            //在禁用pointer之前执行这个函数
-            pointer.GetComponent<Pointer>().ConfirmItem();
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+        //    pointer.SetActive(true);
+        //    itemPanle.SetActive(true);
+        //    //单击右键取消选择
+        //}
+        ////释放按键也取消显示  人物在边界的时候  显示的位置
+        //else if(Input.GetKeyUp(KeyCode.F))
+        //{
+        //    //在禁用pointer之前执行这个函数
+        //    pointer.GetComponent<Pointer>().ConfirmItem();
 
-            pointer.SetActive(false);
-            itemPanle.SetActive(false);
-            //启用移动
-            isCanMove = true;
-        }
+        //    pointer.SetActive(false);
+        //    itemPanle.SetActive(false);
+        //    //启用移动
+        //    isCanMove = true;
+        //}
         //显示的时候按右键取消
         if (pointer.gameObject.activeSelf)
         {

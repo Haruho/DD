@@ -10,6 +10,7 @@ public class Pointer : MonoBehaviour {
     private Transform m_transform;
 
     private GameObject selectObj;
+    private GameObject weaponSprite;
     void Awake()
     {
         instance = this;
@@ -17,6 +18,7 @@ public class Pointer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         m_transform = transform;
+        weaponSprite = GameObject.Find("Player/weapon");
 	}
 	
 	// Update is called once per frame
@@ -62,6 +64,8 @@ public class Pointer : MonoBehaviour {
     /// </summary>
     public void ConfirmItem()
     {
-        print("选择了 ：" + selectObj.name);      
+       // print("选择了 ：" + selectObj.name);
+        //给武器图片赋值
+        weaponSprite.GetComponent<SpriteRenderer>().sprite = selectObj.GetComponent<SpriteRenderer>().sprite;
     }
 }
