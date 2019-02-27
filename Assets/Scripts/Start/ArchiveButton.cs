@@ -36,7 +36,7 @@ public class ArchiveButton : MonoBehaviour {
         if (!isNewData)
         {
             //先读取数据 返回所有的item的长度
-            List<int> ratelist = ReadBuleprintData.instance.GetItemNumber(fileNumber);
+            List<int> ratelist = ReadBlueprintData.instance.GetItemNumber(fileNumber);
             //计算所有率 保留一个小数
             string rate = (((float)ratelist[1] / ratelist[0]) * 100).ToString("0.0") + "%";
             mButton.GetComponentInChildren<Text>().text = "有存档 \n 收集率：" + rate;
@@ -69,7 +69,7 @@ public class ArchiveButton : MonoBehaviour {
         {
             ArchiveOperate ao = new ArchiveOperate();
             ao.CreateGameData(mButton.name+ ".cd");
-            ReadBuleprintData.instance.CreateNewBlueprintFile("Blueprint" + fileNumber + ".json");
+            ReadBlueprintData.instance.CreateNewBlueprintFile("Blueprint" + fileNumber + ".json");
         }
             
     }

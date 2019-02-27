@@ -175,7 +175,7 @@ public class PlayerInstance : MonoBehaviour {
         }
         //打开item界面
         //if (Input.GetKeyDown(KeyCode.F))
-        //{
+        //{ 
         //    pointer.SetActive(true);
         //    itemPanle.SetActive(true);
         //    //单击右键取消选择

@@ -26,7 +26,7 @@ public class PrepareInterface : MonoBehaviour {
     void CreateInterface()
     {
         //获取
-        blueprint = ReadBuleprintData.instance.GetOwnBlueprint(Prepare.filename);
+        blueprint = ReadBlueprintData.instance.GetOwnBlueprint(Prepare.filename);
         for (int i =0;i<blueprint.Count;i++)
         {
             GameObject go = Instantiate(blueprintButton);

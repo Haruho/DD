@@ -8,12 +8,12 @@ using UnityEngine.UI;
 /// <summary>
 /// 从Blueprint.json中读取相应的设计图数据  存放在list中
 /// </summary>
-public class ReadBuleprintData : MonoBehaviour {
+public class ReadBlueprintData : MonoBehaviour {
     ////建造面板的UI
     //public Transform conPanel;
     ////建造物UI预设体
     //public GameObject conPrefab;
-    public static ReadBuleprintData instance;
+    public static ReadBlueprintData instance;
     void Awake()
     {
         instance = this;

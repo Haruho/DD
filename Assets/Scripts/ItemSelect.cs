@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace DD.UI
 {
+    /// <summary>
+    /// 挂载该脚本的Object下的自物资数量应该是Blueprint数量
+    /// </summary>
     public class ItemSelect : MonoBehaviour
     {
         public Transform selectPointer;

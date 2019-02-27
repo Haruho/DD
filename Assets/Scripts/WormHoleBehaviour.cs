@@ -40,7 +40,6 @@ public class WormHoleBehaviour : MonoBehaviour {
 
     private void GenreateMonster()
     {
-        GameObject monster = null;
         //ten for test
         for (int i = 0;i<10;i++)
         {

@@ -8,13 +8,13 @@ using UnityEngine;
 public class GateInstance : MonoBehaviour {
     //Gate类型
     private GateType type;
-    private Collider2D m_collider;
+    // private Collider2D m_collider;
 
-    private SpriteRenderer m_sr;
+    //private SpriteRenderer m_sr;
 	// Use this for initialization
 	void Start () {
-        m_collider = transform.GetComponent<Collider2D>();
-        m_sr = transform.GetComponent<SpriteRenderer>();
+        // m_collider = transform.GetComponent<Collider2D>();
+        // m_sr = transform.GetComponent<SpriteRenderer>();
       //  gateGuise = Resources.Load<Sprite>("battery");
 	}
 	
