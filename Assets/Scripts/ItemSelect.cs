@@ -43,8 +43,10 @@ namespace DD.UI
             {
                 listIndex = 0;
                 print(selectPointer.parent.name);
-                selectPointer.SetParent(GameObject.Find("Canvas").transform,false);
+                selectPointer.SetParent(itemList[listIndex],false);
                 selectPointer.GetComponent<RectTransform>().anchoredPosition = new Vector2(-100, -170f);
+                selectPointer.SetParent(GameObject.Find("Canvas").transform,false);
+                transform.gameObject.SetActive(false);
             }
         }
     }

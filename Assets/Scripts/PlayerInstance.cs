@@ -15,9 +15,9 @@ public class PlayerInstance : MonoBehaviour {
     //当前正在采集的物体
     public static GameObject currentObj;
     //选择item的指针 跟随Player
-    public GameObject pointer;
-    //item可视列表
-    private GameObject itemPanle;
+    //public GameObject pointer;
+    //item可视列表 gameObjectfind无法找到禁用的物体
+    public GameObject itemPanle;
     //transform实例
     private Transform ctransform;
 
@@ -30,8 +30,7 @@ public class PlayerInstance : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Init();
-        pointer = ctransform.Find("pointer").gameObject;
-        itemPanle = ctransform.Find("Item").gameObject;
+        //pointer = ctransform.Find("pointer").gameObject;
         anim = GetComponent<Animator>();
     }
 
@@ -174,39 +173,41 @@ public class PlayerInstance : MonoBehaviour {
             GameSceneUIManager.instance.Heal();
         }
         //打开item界面
-        //if (Input.GetKeyDown(KeyCode.F))
-        //{ 
-        //    pointer.SetActive(true);
-        //    itemPanle.SetActive(true);
-        //    //单击右键取消选择
-        //}
-        ////释放按键也取消显示  人物在边界的时候  显示的位置
-        //else if(Input.GetKeyUp(KeyCode.F))
-        //{
-        //    //在禁用pointer之前执行这个函数
-        //    pointer.GetComponent<Pointer>().ConfirmItem();
-
-        //    pointer.SetActive(false);
-        //    itemPanle.SetActive(false);
-        //    //启用移动
-        //    isCanMove = true;
-        //}
-        //显示的时候按右键取消
-        if (pointer.gameObject.activeSelf)
-        {
-            //禁用移动
-            isCanMove = false;
-            if (Input.GetMouseButtonDown(1))
-            {
-                //启用移动
-                isCanMove = true;
-                //右键代表取消选择
-                //取消不必要执行
-                //pointer.GetComponent<Pointer>().ConfirmItem(0);
-                pointer.SetActive(false);
-                itemPanle.SetActive(false);
-            }
+        if (Input.GetKeyDown(KeyCode.F))
+        { 
+            //取消Pointer
+           //pointer.SetActive(true);
+           itemPanle.SetActive(true);
+           //单击右键取消选择
         }
+        //释放按键也取消显示  人物在边界的时候  显示的位置
+        else if(Input.GetKeyUp(KeyCode.F))
+        {
+           //在禁用pointer之前执行这个函数
+           //pointer.GetComponent<Pointer>().ConfirmItem();
+
+           //pointer.SetActive(false);
+           //取消item面板显示在item本身的脚本上
+          // itemPanle.SetActive(false);
+           //启用移动
+           isCanMove = true;
+        }
+        //显示的时候按右键取消
+        // if (pointer.gameObject.activeSelf)
+        // {
+        //     //禁用移动
+        //     isCanMove = false;
+        //     if (Input.GetMouseButtonDown(1))
+        //     {
+        //         //启用移动
+        //         isCanMove = true;
+        //         //右键代表取消选择
+        //         //取消不必要执行
+        //         //pointer.GetComponent<Pointer>().ConfirmItem(0);
+        //         pointer.SetActive(false);
+        //         itemPanle.SetActive(false);
+        //     }
+        // }
     }
 
     /// <summary>

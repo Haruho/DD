@@ -64,6 +64,10 @@ public class ArchiveOperate : MonoBehaviour {
         //给存档单例赋值
         Archive.SetInstance(archive);
     }
+    //加密存档
+    void SecurityData(){
+
+    }
     /// <summary>
     /// 创建存档  新建
     /// </summary>

@@ -76,7 +76,7 @@
      <Compile Include="Assets\Scripts\ResourcesInstance.cs" />
      <Compile Include="Assets\Scripts\Start\ArchiveButton.cs" />
      <Compile Include="Assets\Scripts\Start\ArchiveOperate.cs" />
-     <Compile Include="Assets\Scripts\Start\ReadBuleprintData.cs" />
+     <Compile Include="Assets\Scripts\Start\ReadBlueprintData.cs" />
      <Compile Include="Assets\Scripts\WormHoleBehaviour.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
