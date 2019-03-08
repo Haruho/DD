@@ -177,7 +177,7 @@ public class PlayerInstance : MonoBehaviour {
         { 
             //取消Pointer
            //pointer.SetActive(true);
-           itemPanle.SetActive(true);
+           itemPanle.GetComponent<Animator>().Play("ItemPanleAnimation");
            //单击右键取消选择
         }
         //释放按键也取消显示  人物在边界的时候  显示的位置

@@ -37,4 +37,10 @@ public class SceneController : MonoBehaviour {
     {
         SceneManager.LoadScene(3);
     }
+    public void OpenBackpack(){
+        SceneManager.LoadScene("Prepare",LoadSceneMode.Additive);
+    }
+    public void CloseBackpack(){
+        SceneManager.UnloadSceneAsync("Prepare");
+    }
 }

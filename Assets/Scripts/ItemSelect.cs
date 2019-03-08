@@ -12,12 +12,21 @@ namespace DD.UI
         public Transform selectPointer;
         private List<Transform> itemList = new List<Transform>();
         private int listIndex;
+        private List<Blueprint> blueprint;
+        private GameObject itemPrefab;
         // Use this for initialization
         void Start()
         {
-            for (int i = 0;i<transform.childCount;i++)
-            {
-                itemList.Add(transform.GetChild(i));
+            //获取Item的预设体
+            itemPrefab = Resources.Load("Prefabs/UIPrefabs/Item") as GameObject;
+            //获取所有蓝图信息 创建所有item的UI
+            blueprint = ReadBlueprintData.instance.GetOwnBlueprint(Prepare.filename);
+            for(int i =0;i<blueprint.Count;i++){
+                GameObject itemTemp = Instantiate(itemPrefab);
+                itemTemp.transform.SetParent(transform,false);
+                itemTemp.name =  blueprint[i].name;
+                itemTemp.GetComponentInChildren<Text>().text = "Wood Cost:" + blueprint[i].woodExpend.ToString() + "\n" + "Metal Cost:"+blueprint[i].metalExpend.ToString();
+                itemList.Add(itemTemp.transform);
             }
         }
 
@@ -46,7 +55,7 @@ namespace DD.UI
                 selectPointer.SetParent(itemList[listIndex],false);
                 selectPointer.GetComponent<RectTransform>().anchoredPosition = new Vector2(-100, -170f);
                 selectPointer.SetParent(GameObject.Find("Canvas").transform,false);
-                transform.gameObject.SetActive(false);
+                transform.GetComponent<Animator>().Play("ItemPanleAnimation_back");
             }
         }
     }
