@@ -8,17 +8,17 @@
       "type": 2,
       "value": 10,
       "image": "m21",
-      "ownState":true
+      "ownState": true,
     },
     {
       "id": 2,
-      "name": "激光枪",
-      "woodExpend": 9,
+      "image": "jiguangqiang",
       "metalExpend": 9,
+      "name": "激光枪",
+      "ownState": true,
       "type": 2,
       "value": 20,
-      "image": "jiguangqiang",
-      "ownState": true
+      "woodExpend": 9
     },
     {
       "id": 3,

@@ -68,7 +68,9 @@
      <Compile Include="Assets\Scripts\GameSceneUIManager.cs" />
      <Compile Include="Assets\Scripts\GateInstance.cs" />
      <Compile Include="Assets\Scripts\ItemSelect.cs" />
+     <Compile Include="Assets\Scripts\ItemTypeInstance.cs" />
      <Compile Include="Assets\Scripts\MonsterBehaviour.cs" />
+     <Compile Include="Assets\Scripts\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\PlayerInstance.cs" />
      <Compile Include="Assets\Scripts\Pointer.cs" />
      <Compile Include="Assets\Scripts\Prepare\ItemDrag.cs" />
