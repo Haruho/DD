@@ -22,6 +22,10 @@ public class Blueprint
     /// </summary>
     public int metalExpend { get; set; }
     /// <summary>
+    /// 建造需要的时间
+    /// </summary>
+    public int time { get; set; }
+    /// <summary>
     /// 建造物类型 1是建筑  2是武器
     /// </summary>
     public int type { get; set; }

@@ -2,29 +2,32 @@
   "blueprint": [
     {
       "id": 1,
-      "name": "M21",
+      "name": "BL58",
       "woodExpend": 10,
       "metalExpend": 10,
+      "time": 3,
       "type": 2,
       "value": 10,
-      "image": "m21",
-      "ownState": true,
+      "image": "bl58",
+      "ownState": true
     },
     {
       "id": 2,
-      "image": "jiguangqiang",
+      "name": "狙击枪",
+      "woodExpend": 9,
       "metalExpend": 9,
-      "name": "激光枪",
-      "ownState": true,
+      "time": 3,
       "type": 2,
       "value": 20,
-      "woodExpend": 9
+      "image": "jujiqiang",
+      "ownState": true
     },
     {
       "id": 3,
       "name": "炮台",
       "woodExpend": 20,
       "metalExpend": 20,
+      "time": 7,
       "type": 1,
       "value": 50,
       "image": "paotai",
@@ -35,6 +38,7 @@
       "name": "箭塔",
       "woodExpend": 30,
       "metalExpend": 10,
+      "time": 7,
       "type": 1,
       "value": 40,
       "image": "jianta",

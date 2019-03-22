@@ -27,12 +27,12 @@ namespace DD.UI
                 blueprint = ReadBlueprintData.instance.GetOwnBlueprint(Prepare.filename);
             }
             //添加空手Item  置于首位
-            GameObject fistItem = Instantiate(itemPrefab);
-            fistItem.transform.SetParent(transform,false);
-            fistItem.name = "空手";
-            fistItem.GetComponentInChildren<Text>().text = "切换回空手";
-            fistItem.GetComponent<ItemTypeInstance>().type = 0;
-            itemList.Add(fistItem.transform);
+            //GameObject fistItem = Instantiate(itemPrefab);
+            //fistItem.transform.SetParent(transform,false);
+            //fistItem.name = "空手";
+            //fistItem.GetComponentInChildren<Text>().text = "切换回空手";
+            //fistItem.GetComponent<ItemTypeInstance>().type = 0;
+            //itemList.Add(fistItem.transform);
             for(int i =0;i<blueprint.Count;i++){
                 //实例化Item菜单
                 GameObject itemTemp = Instantiate(itemPrefab);
@@ -51,23 +51,33 @@ namespace DD.UI
         // Update is called once per frame
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                selectPointer.GetComponent<RectTransform>().anchoredPosition = new Vector2(60, -140);
+            }
+            //打开item菜单
             if (Input.GetKey(KeyCode.F))
             {
+                //指针变换父物体  方便获取选择的item
+                selectPointer.SetParent(itemList[listIndex], false);
+                //选择操作
                 if (Input.GetKeyDown(KeyCode.RightArrow) && listIndex < itemList.Count-1)
                 {
+                    //索引
                     listIndex++;
-                    selectPointer.GetComponent<RectTransform>().anchoredPosition += new Vector2(95, 0);
+                    //指针位置
+                    selectPointer.GetComponent<RectTransform>().anchoredPosition = new Vector2(60,-140);
                 }
                 if (Input.GetKeyDown(KeyCode.LeftArrow)&& listIndex > 0)
                 {
                     listIndex--;
-                    selectPointer.GetComponent<RectTransform>().anchoredPosition += new Vector2(-95, 0);
+                    selectPointer.GetComponent<RectTransform>().anchoredPosition = new Vector2(60,-140);
                 }
-                selectPointer.SetParent(itemList[listIndex], false);
-                selectPointer.GetComponent<RectTransform>().anchoredPosition = new Vector2(76.8f,-170f);
             }
+            //释放选择建的时候代表选择完成
             if (Input.GetKeyUp(KeyCode.F))
             {
+                //重置索引
                 listIndex = 0;
                 //生成装备图片  触发攻击功能
                 //非空手的情况下触发
@@ -79,10 +89,15 @@ namespace DD.UI
                 {
                     PlayerAttack.isCanAttack = false;
                 }
-                selectPointer.SetParent(itemList[listIndex],false);
+                //指针位置变换隐藏
                 selectPointer.GetComponent<RectTransform>().anchoredPosition = new Vector2(-100, -170f);
+                //重置
                 selectPointer.SetParent(GameObject.Find("Canvas").transform,false);
+                //item窗口动画
                 transform.GetComponent<Animator>().Play("ItemPanleAnimation_back");
+
+                //触发制作行为
+                
             }
         }
     }

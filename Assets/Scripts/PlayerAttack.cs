@@ -8,9 +8,18 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour {
 	//玩家攻击状态的标志位
 	public static bool isCanAttack;
+    public static PlayerAttack instance;
+    private Transform player;
+    void Awake()
+    {
+        instance = this; 
+    }
 	// Use this for initialization
 	void Start () {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 		isCanAttack = false;
+        //给Player添加武器图片
+
 	}
 	
 	// Update is called once per frame
@@ -22,4 +31,13 @@ public class PlayerAttack : MonoBehaviour {
 			}
 		}
 	}
+
+    /// <summary>
+    /// 成功制作武器，添加武器图片
+    /// </summary>
+    /// <param name="weaponName"></param>
+    public void AddWeaponSprite(string weaponName)
+    {
+        
+    }
 }
